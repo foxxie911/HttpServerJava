@@ -19,7 +19,7 @@ public class Main {
 
       // Waits for connection from client
       Socket clientConnection = serverSocket.accept();
-      System.out.println("accepted new connection");
+      System.out.println("User Connected.....");
 
       var inputStream = clientConnection.getInputStream();
       var inputBuffer = new BufferedReader(new InputStreamReader(inputStream));
@@ -33,7 +33,7 @@ public class Main {
       String inputBufferString = stringBuilder.toString();
 
 
-      String[] url = inputBufferString.split("( |\n)");
+      String[] url = inputBufferString.split("([ \n])");
       var output = clientConnection.getOutputStream();
       if (url[1].equals("/")) {
         output.write("HTTP/1.1 200 OK\r\n\r\n".getBytes(StandardCharsets.UTF_8));
